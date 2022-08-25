@@ -1,0 +1,13 @@
+Q:        
+from project import db, create_app, models
+db.create_all(app=create_app()) # pass the create_app result so Flask-SQLAlchemy gets the configuration.
+実行時に
+
+ warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by defaul:t in the future.  Set it to True to suppress this warning.')
+が表示され、DBファイルが作られない
+
+ A：
+  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+  を、__init__.py
+  create_appに追加
+  
